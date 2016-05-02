@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	 <!-- true表示允许开发模式 ,之后修改struts.xml能马上反馈，不用重新部署-->
+     <constant name="struts.devMode" value="true" />
+     
+     <!-- <constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory"/> -->
+     <!-- 设置字符编码 -->
+     <constant name="struts.i18n.encoding" value="UTF-8" />     
+     <!-- namespace决定了action的访问路径，默认为""，表示可以接收所有action -->
+     <!-- namespace可以写成/ ，或者/xxx ，或者/xxx/yyy ,对应的action访问路径为
+     /index.action ， /xxx/index.action ,或者/xxx/yyy/index.action. -->
+	 <package name="default" namespace="/" extends="struts-default">       
+       
+       <!-- 可以在配置文件中配置Action的时候用method=来指定执行方法，也可以在url地址中动态指定(DMI) -->
+        <action name="register" class="baseAction" method="register">  <!-- 访问时访问hello或者hello.action，struts2中.action可省略 -->
+            <result name="success">/WEB-INF/successRegister.jsp</result>
+            <result name="fail">/WEB-INF/failRegister.jsp</result>
+        </action>
+        <action name="index" class="baseAction">
+        	<result name="success">/WEB-INF/index.jsp</result>
+        </action>
+    </package>
+
+	<!-- package与java中包类似，用来区分重名的情况 -->
+
+</struts>
